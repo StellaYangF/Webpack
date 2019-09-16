@@ -1,0 +1,18 @@
+{
+    "name": "webpack-base",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack --env.production --config ./build/webpack.base.js",
+        "dev": "webpack --env.development --config ./build/webpack.base.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "webpack": "^4.40.2",
+        "webpack-cli": "^3.3.8",
+        "webpack-merge": "^4.2.2"
+    }
+}
