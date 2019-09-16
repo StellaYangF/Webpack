@@ -7,7 +7,10 @@
     4.1 buil : webpack --mode production
   5. npm run build
   6. + webpack.config.js
-  7. + build/
+  7. + build/webpack.base.js
+  8. + build/webpack.dev.js
+  9. + build/webpack.prod.js
+  10. - webpack.config.js
    
 ## Reference
    webpack.config.js
