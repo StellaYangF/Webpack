@@ -1,0 +1,17 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "useBuiltIns":"usage",
+      "corejs":2
+    }],
+    "@babel/preset-react",
+    ["@babel/preset-typescript",{
+     "allExtensions": true  
+    }]
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators",{"legacy":true}],
+    ["@babel/plugin-proposal-class-properties",{"loose":true}],
+    "@babel/plugin-transform-runtime"
+  ]
+}
