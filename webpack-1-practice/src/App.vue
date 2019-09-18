@@ -6,14 +6,15 @@
 </template>
 
 <script lang='ts'>
+import axios from 'axios';
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({
-  components: {
-    // todos...
-  }
-})
+@Component
 export default class Todo extends Vue {
-  public todos:string[] = ['apple', 'banana', 'pear']
+  public todos:string[] = [];
+  async mounted () {
+    let { data } = await axios.get('/api/list');
+    this.todos = data;
+  }
 }
 </script>

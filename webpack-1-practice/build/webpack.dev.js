@@ -1,9 +1,14 @@
-const { resolve } = require('path');
+const { resolve } = require("path");
 module.exports = {
-  mode: 'development',
+  mode: "development",
   devServer: {
-    port: 3000,
+    proxy: {
+      "/api": {
+        targt: "http://localhost:4000"
+      }
+    },
+    port: 4000,
     compress: true,
-    contentBase: resolve(__dirname, '../dist'),
+    contentBase: resolve(__dirname, "../dist")
   }
-}
+};

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./index";
 
 // interface IProps {
 //   num: number
@@ -24,4 +25,4 @@ import ReactDOM from 'react-dom';
 // ReactDOM.render( <Counter num={1} />, document.getElementById('root'));
 
 
-ReactDOM.render(<div>Hello</div>,document.getElementById('root'));
+// ReactDOM.render(<div>Hello</div>,document.getElementById('root'));

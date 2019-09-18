@@ -4,14 +4,19 @@ const { resolve } = require("path");
 const merge = require("webpack-merge");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = env => {
   const isDev = env.development;
   let base = {
+    
     entry: {
      "vue": resolve(__dirname, "../src/vue.ts"),
-     "react": resolve(__dirname, "../src/react.ts")
+     "react": resolve(__dirname, "../src/react.ts"),
+    },
+    resolve: {
+      extensions: [".js", ".ts", "vue", "jsx", "tsx", ".json", "css"],
     },
     module: {
       rules: [
@@ -21,11 +26,13 @@ module.exports = env => {
         },
         {
           test: /\.tsx?$/,
-          use: "babel-loader"
+          use: "babel-loader",
+          exclude: /node_modules/,
         },
         {
           test: /\.js$/,
-          use: "babel-loader"
+          use: "babel-loader",
+          exclude: /node_modules/,
         },
         {
           test: /\.css$/,
@@ -88,7 +95,10 @@ module.exports = env => {
           removeAttributeQuotes: true,
           collapseWhitespace: true
         },
-      })
+      }),
+      new CopyWebpackPlugin([
+        { from: resolve('../src/static'), to: resolve("../dist") }
+      ])
     ].filter(Boolean)
   };
   return isDev ? merge(base, dev) : merge(base, prod);

@@ -1,16 +1,8 @@
 {
-  "name": "webpack-1-practice",
+  "name": "webpack-optimize",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev:build": "webpack --env.development --config ./build/webpack.base.js",
-    "dev": "webpack-dev-server --env.development --config ./build/webpack.base.js",
-    "build": "webpack --env.production --config ./build/webpack.base.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
@@ -32,6 +24,7 @@
     "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "purgecss-webpack-plugin": "^1.6.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "terser-webpack-plugin": "^2.0.1",
@@ -52,5 +45,12 @@
     "typescript": "^3.6.3",
     "vue": "^2.6.10",
     "vue-property-decorator": "^8.2.2"
-  }
+  },
+  "scripts": {
+    "build": "webpack --env=production --config ./build/webpack.base.js",
+    "dev": "webpack --env=development --config ./build/webpack.base.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
