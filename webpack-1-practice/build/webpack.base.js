@@ -9,7 +9,10 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = env => {
   const isDev = env.development;
   let base = {
-    entry: resolve(__dirname, "../src/index.js"),
+    entry: {
+     "vue": resolve(__dirname, "../src/vue.ts"),
+     "react": resolve(__dirname, "../src/react.ts")
+    },
     module: {
       rules: [
         {
@@ -60,7 +63,7 @@ module.exports = env => {
       ]
     },
     output: {
-      filename: "bundle.js",
+      filename: "[name]bundle.js",
       path: resolve(__dirname, "../dist")
     },
     plugins: [
@@ -69,12 +72,22 @@ module.exports = env => {
       }),
       new VueLoaderPlugin(),
       new htmlWebpackPlugin({
-        template: resolve(__dirname, "../public/index.html"),
-        filename: "index.html",
+        template: resolve(__dirname, "../public/vue.html"),
+        filename: "vueindex.html",
+        chunks: ["vue"],
         minify: !isDev && {
           removeAttributeQuotes: true,
           collapseWhitespace: true
-        }
+        },
+      }),
+      new htmlWebpackPlugin({
+        template: resolve(__dirname, "../public/react.html"),
+        filename: "reactindex.html",
+        chunks: ["react"],
+        minify: !isDev && {
+          removeAttributeQuotes: true,
+          collapseWhitespace: true
+        },
       })
     ].filter(Boolean)
   };
