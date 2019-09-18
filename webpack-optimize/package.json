@@ -50,8 +50,12 @@
   },
   "scripts": {
     "build": "webpack --env=production --config ./build/webpack.base.js",
-    "dev": "webpack --env=development --config ./build/webpack.base.js"
+    "dev": "webpack --env=development --config ./build/webpack.base.js",
+    "dll": "webpack --config webpack.dll.js"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC"

@@ -9,17 +9,22 @@ const { sync } = require("glob");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
+const DllPlugin = require('webpack/lib/DllPlugin');
 // const AddAssetHtmlCdnPlugin = require("add-asset-html-cdn-webpack-plugin");
 
 module.exports = mode => {
   const isDev = mode === "development";
   let base = {
     entry: {
-      ts: resolve(__dirname, "../src/index.js")
+      ts: resolve(__dirname, "../src/index.js"),
+      react: "react",
+      reactDOM: "react-dom"
     },
     output: {
       filename: "[name].js",
-      path: resolve(__dirname, "../dist")
+      chunkFilename: "[name].min.js",
+      path: resolve(__dirname, "../dist"),
+      library: "react",
     },
     module: {
       rules: [
@@ -73,9 +78,14 @@ module.exports = mode => {
             // }
           ]
         }
-      ]
+      ],
+      noParse: /jquery/
     },
     plugins: [
+      // new DllPlugin({
+      //   name: "react",
+      //   path: resolve(__dirname, "dll/manifest.json")
+      // }),
       // new AddAssetHtmlCdnPlugin(true,{
       //   'jquery':'https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js'
       // }),
@@ -104,7 +114,8 @@ module.exports = mode => {
       minimizer: [
         new OptimizeCssAssetsWebpackPlugin(),
         new TerserWebpackPlugin()
-      ]
+      ],
+      usedExports: true
     },
     externals: {
       "jquery": "$"
