@@ -1,4 +1,4 @@
-# Webpack Learning Notes
+# Webpack Notes
 
 ## 1. Configuration 
 ### 1.1 Loaders 
