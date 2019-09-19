@@ -3,6 +3,7 @@
 ## 1. Configuration 
 ### 1.1 Loaders 
 #### 1.1.1 Introduction
+Out of the box, webpack only understands JavaScript and JSON files. Loaders allow webpack to process other types of files and convert them into valid modules that can be consumed by your application and added to the dependency graph. [*from webpack documentation*](https://webpack.js.org/concepts/#loaders)
 - `test`: RegExp 
 - `use`: string, object, or array
 - `include/exclude`
