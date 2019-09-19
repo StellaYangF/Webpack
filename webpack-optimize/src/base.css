@@ -1,0 +1,8 @@
+body {
+  background: #f9b;
+}
+
+div {
+  background: #f9b;
+  transform: rotate(45deg);
+}

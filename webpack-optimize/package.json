@@ -49,13 +49,10 @@
     "vue-property-decorator": "^8.2.2"
   },
   "scripts": {
-    "build": "webpack --env=production --config ./build/webpack.base.js",
-    "dev": "webpack --env=development --config ./build/webpack.base.js",
-    "dll": "webpack --config webpack.dll.js"
+    "build": "webpack --env=production",
+    "dev:build": "webpack --env=development",
+    "dev": "webpack-dev-server --env=development"
   },
-  "sideEffects": [
-    "**/*.css"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC"
