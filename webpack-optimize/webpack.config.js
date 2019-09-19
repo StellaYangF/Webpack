@@ -6,6 +6,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const PurgecssPlugin =  require('purgecss-webpack-plugin');
+const glob = require('glob');
+// console.log(glob.sync(`${resolve(__dirname, "src")}/**/*`, { nodir: true }));  
+// => 数组
 
 module.exports = mode => {
   const isDev = mode === DEVELOPMENT;
@@ -34,14 +38,40 @@ module.exports = mode => {
     module: {
       rules: [
         {
+          test: /\.js$/,
+          use: "babel-loader"
+        },
+        {
           test: /\.css$/,
           use: [
             {
-              loader: isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+              loader: isDev ? "style-loader" : MiniCssExtractPlugin.loader
             },
-            "css-loader",
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 2
+              }
+            },
             "postcss-loader",
+            "sass-loader"
           ]
+        }, {
+          test: /\.scss$/,
+          use: [
+            "style-loader", "css-loader", "sass-loader"
+          ]
+        }, {
+          test: /\.(jpe?g|png|gif|svg)$/,
+          use: [
+            {
+              loader: "url-loader",
+              options: {
+                name: "img/[contentHash].[ext]",
+                limit: 1024
+              }
+            }, 
+        ]
         }
       ]
     },
@@ -57,7 +87,9 @@ module.exports = mode => {
         }
       }),
 
-       !isDev && new MiniCssExtractPlugin(),
+       !isDev && new MiniCssExtractPlugin({
+         filename: "css/[name].[contentHash].css"
+       }),
 
        new CleanWebpackPlugin(),
 
