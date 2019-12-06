@@ -1,4 +1,6 @@
 const path = require("path");
+const CopyPlugin = require('copy-webpack-plugin');
+
 module.exports = {
   mode: "development",
   output: {
@@ -13,5 +15,11 @@ module.exports = {
       warnings: true,
       errors: true,
     }
-  }
+  },
+  plugins: [
+    new CopyPlugin([{
+      from: path.resolve(__dirname, '../src/a.json'),
+      to: path.resolve(__dirname, '../dist/a.json'),
+    }])
+  ]
 };
