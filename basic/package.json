@@ -1,7 +1,7 @@
 {
   "name": "basic",
   "version": "1.0.0",
-  "description": "",
+  "description": "Webpack operation and notes",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config ./build/webpack.base.js --env.development",
@@ -9,12 +9,13 @@
     "dev.prod": "webpack --config ./build/webpack.base.js --env.development"
   },
   "keywords": [],
-  "author": "",
+  "author": "stella",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.4",
+    "add-asset-html-cdn-webpack-plugin": "^1.0.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.5",
