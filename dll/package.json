@@ -1,0 +1,24 @@
+{
+  "name": "dll",
+  "version": "1.0.0",
+  "description": "Webpack optimation with dll",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Stella",
+  "license": "ISC",
+  "dependencies": {
+    "D": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.7.3",
+    "css-loader": "^3.2.1",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.1"
+  }
+}
